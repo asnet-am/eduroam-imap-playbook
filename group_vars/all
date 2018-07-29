@@ -1,26 +1,26 @@
 ---
 # The upstream eduroam federation-level RADIUS servers
-# These are for South Africa; get yours from your NRO
+# These are for sample, not working; get yours from your NRO
 eduroam_flr_servers:
-  - hostname: flr-cpt.eduroam.ac.za
-    ip: 155.232.195.20
+  - hostname: flr1-example.kreonet.net
+    ip: 150.183.96.51
     port: 1812
     secret: MySharedSecret
-  - hostname: flr-jnb.eduroam.ac.za
-    ip: 155.232.195.21
+  - hostname: flr2-example.kreonet.net
+    ip: 150.183.96.52
     port: 1812
     secret: MySharedSecret
 
 # Your realm for eduroam (usually your primary DNS name)
-radius_realm: example.ac.za
+radius_realm: kisti.re.kr
 
 # Details of test account(s) to create within your realm
 radius_local_users:
-  - username: nren_radius_test
-    password: PleaseChangeThisPassword
+  - username: eduroam
+    password: xeap2018
 
 # Details of your IMAP server
-imap_server: imap.gmail.com
+imap_server: mail.kisti.re.kr
 imap_port: 993
 imap_ssl: yes
 
