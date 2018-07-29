@@ -7,7 +7,7 @@
 - name: Sent Access-Reject immediately
   become: yes
   replace:
-    path: /etc/freeradius/radiusd.conf
+    path: /etc/freeradius/3.0/radiusd.conf
     regexp: "^\\s*reject_delay\\s*=\\s*(?!0)\\d+\\s*$"
     replace: "	reject_delay = 0"
   notify:
@@ -17,7 +17,7 @@
 - name: Respond to Status-Server requests.
   become: yes
   replace:
-    path: /etc/freeradius/radiusd.conf
+    path: /etc/freeradius/3.0/radiusd.conf
     regexp: "^\\s*status_server\\s*=\\s*(?!yes).*$"
     replace: "	status_server = yes"
   notify:
@@ -27,7 +27,7 @@
 - name: Turn proxying of RADIUS requests on
   become: yes
   replace:
-    path: /etc/freeradius/radiusd.conf
+    path: /etc/freeradius/3.0/radiusd.conf
     regexp: "^\\s*proxy_requests\\s*=\\s*(?!yes).*$"
     replace: "	proxy_requests = yes"
   notify:
@@ -38,7 +38,7 @@
   become: yes
   template:
     src: sites-available/eduroam.j2
-    dest: /etc/freeradius/sites-available/eduroam
+    dest: /etc/freeradius/3.0/sites-available/eduroam
     mode: 0644
   notify:
     - restart freeradius
@@ -48,8 +48,8 @@
   become: yes
   file:
     state: link
-    src: /etc/freeradius/sites-available/eduroam
-    path: /etc/freeradius/sites-enabled/eduroam
+    src: /etc/freeradius/3.0/sites-available/eduroam
+    path: /etc/freeradius/3.0/sites-enabled/eduroam
   notify:
     - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-sp ]
@@ -58,7 +58,7 @@
   become: yes
   template:
     src: mods-config/attr_filter/pre-proxy.j2
-    dest: /etc/freeradius/mods-config/attr_filter/pre-proxy
+    dest: /etc/freeradius/3.0/mods-config/attr_filter/pre-proxy
     mode: 0644
   notify:
     - restart freeradius
@@ -69,7 +69,7 @@
 - name:
   become: yes
   lineinfile:
-    path: /etc/freeradius/clients.conf
+    path: /etc/freeradius/3.0/clients.conf
     regexp: "^\\$INCLUDE clients-eduroam-flrs.conf"
     state: present
     line: "$INCLUDE clients-eduroam-flrs.conf"
@@ -81,7 +81,7 @@
   become: yes
   template:
     src: clients.conf.j2
-    dest: /etc/freeradius/clients-eduroam-flrs.conf
+    dest: /etc/freeradius/3.0/clients-eduroam-flrs.conf
     mode: 0644
   notify:
     - restart freeradius
@@ -91,7 +91,7 @@
   become: yes
   template:
     src: proxy.conf.j2
-    dest: /etc/freeradius/proxy.conf
+    dest: /etc/freeradius/3.0/proxy.conf
     mode: 0644
   notify:
     - restart freeradius
@@ -101,7 +101,7 @@
   become: yes
   template:
     src: mods-available/f_ticks.j2
-    dest: /etc/freeradius/mods-available/f_ticks
+    dest: /etc/freeradius/3.0/mods-available/f_ticks
     mode: 0644
   notify:
     - restart freeradius
@@ -111,8 +111,8 @@
   become: yes
   file:
     state: link
-    src: /etc/freeradius/mods-available/f_ticks
-    path: /etc/freeradius/mods-enabled/f_ticks
+    src: /etc/freeradius/3.0/mods-available/f_ticks
+    path: /etc/freeradius/3.0/mods-enabled/f_ticks
   notify:
     - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-sp ]

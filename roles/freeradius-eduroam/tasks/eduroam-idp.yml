@@ -10,7 +10,7 @@
   block:
     - name: Check whether we've overwritten the default eap module
       stat:
-        path: /etc/freeradius/mods-enabled/eap
+        path: /etc/freeradius/3.0/mods-enabled/eap
         follow: no
         get_attributes: no
         get_checksum: no
@@ -19,13 +19,13 @@
       register: eap
     - name: Disable the default eap module
       file:
-        path: /etc/freeradius/mods-enabled/eap
+        path: /etc/freeradius/3.0/mods-enabled/eap
         state: absent
       when: eap.stat.islnk is defined and eap.stat.islnk
     - name: Install a new eduroam-ish eap module
       template:
         src: mods-available/eap.j2
-        dest: /etc/freeradius/mods-enabled/eap
+        dest: /etc/freeradius/3.0/mods-enabled/eap
       notify:
         - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-idp ]
@@ -34,7 +34,7 @@
   become: yes
   template:
     src: sites-available/eduroam-inner-tunnel.j2
-    dest: /etc/freeradius/sites-available/eduroam-inner-tunnel
+    dest: /etc/freeradius/3.0/sites-available/eduroam-inner-tunnel
   notify:
     - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-idp ]
@@ -43,8 +43,8 @@
   become: yes
   file:
     state: link
-    src: /etc/freeradius/sites-available/eduroam-inner-tunnel
-    path: /etc/freeradius/sites-enabled/eduroam-inner-tunnel
+    src: /etc/freeradius/3.0/sites-available/eduroam-inner-tunnel
+    path: /etc/freeradius/3.0/sites-enabled/eduroam-inner-tunnel
   notify:
     - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-idp ]
@@ -53,7 +53,7 @@
   become: yes
   template:
     src: mods-config/files/authorize.j2
-    dest: /etc/freeradius/mods-config/files/authorize
+    dest: /etc/freeradius/3.0/mods-config/files/authorize
   notify:
     - restart freeradius
   tags: [ freeradius, freeradius-config, eduroam-idp ]
@@ -62,8 +62,8 @@
   become: yes
   file:
     state: link
-    src: /etc/freeradius/mods-available/pam
-    path: /etc/freeradius/mods-enabled/pam
+    src: /etc/freeradius/3.0/mods-available/pam
+    path: /etc/freeradius/3.0/mods-enabled/pam
   when: use_pam is defined and use_pam
   notify:
     - restart freeradius
@@ -74,7 +74,7 @@
   block:
     - name: Check whether we've overwritten the default ldap module
       stat:
-        path: /etc/freeradius/mods-enabled/ldap
+        path: /etc/freeradius/3.0/mods-enabled/ldap
         follow: no
         get_attributes: no
         get_checksum: no
@@ -83,13 +83,13 @@
       register: ldap
     - name: Disable the default ldap module
       file:
-        path: /etc/freeradius/mods-enabled/ldap
+        path: /etc/freeradius/3.0/mods-enabled/ldap
         state: absent
       when: ldap.stat.islnk is defined and ldap.stat.islnk
     - name: Install a new eduroam-ish ldap module
       template:
         src: mods-available/ldap.j2
-        dest: /etc/freeradius/mods-enabled/ldap
+        dest: /etc/freeradius/3.0/mods-enabled/ldap
       notify:
         - restart freeradius
   when: use_ldap is defined and use_ldap
@@ -100,16 +100,16 @@
   block:
      - name: create ldap mods-config directory
        file:
-         path: /etc/freeradius/mods-config/ldap
+         path: /etc/freeradius/3.0/mods-config/ldap
          state: directory
          mode: 0755
      - name: create an ldap instantiation config in mods-config
        template:
          src: mods-config/ldap/instantiate.j2
-         dest: /etc/freeradius/mods-config/ldap/instantiate
+         dest: /etc/freeradius/3.0/mods-config/ldap/instantiate
      - name: add a line to the instantiate block
        lineinfile:
-         path: /etc/freeradius/radiusd.conf
+         path: /etc/freeradius/3.0/radiusd.conf
          regexp: "^\\$INCLUDE mods-config/ldap/instantiate"
          line: "$INCLUDE mods-config/ldap/instantiate"
          state: present
@@ -120,7 +120,7 @@
 - name: Seed a secret for Chargeable-User-Identity
   become: yes
   replace:
-    path: /etc/freeradius/policy.d/cui
+    path: /etc/freeradius/3.0/policy.d/cui
     regexp: "^cui_hash_key\\s*=\\s*[\"']changeme[\"']?\\s*$"
     replace: "cui_hash_key = \"{{ lookup('password', '/dev/null') }}\""
   when: send_cui is defined and send_cui

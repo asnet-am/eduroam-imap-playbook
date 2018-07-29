@@ -69,10 +69,6 @@ ymous@$REALM -p $PASSWORD -m WPA-EAP -s eduroam -e TTLS -2 PAP
 
 ## Notes & Limitations
 
-### FreeRADIUS version
-
-Since Ubuntu 16.04 LTS still uses [FreeRADIUS 2.2.8](https://packages.ubuntu.com/xenial/amd64/freeradius), the **freeradius-eduroam** role installs a FreeRADIUS 3.0.x series package from an [Ubuntu PPA](https://launchpad.net/~freeradius/+archive/ubuntu/stable-3.0/). An archived 2.2.x series configuration is [available in a separate branch](https://github.com/safire-ac-za/eduroam-imap-playbook/tree/freeradius-2.x) but, since 2.2.x is end-of-life, no futher work will be done on the branch.
-
 ### EAP-TTLS/PAP
 
 Because FreeRADIUS has no access to a cleartext password when authenticating via PAM, only PAP can be used as an inner/phase two authentication method. This typically means you need to configure clients to use TTLS/PAP (PEAP/MSCHAPv2 will **not** work). This was not originally supported out-the-box by Windows, but Windows 10 now includes a TTLS supplicant. Likewise Android and wpasupplicant on Linux both support TTLS.

@@ -1,13 +1,5 @@
 ---
 # tasks file for freeradius-eduroam
-- name: Use the unofficial FreeRADIUS PPA to get 3.x
-  become: yes
-  apt_repository:
-    # This will eventually be deprecated
-    repo: "ppa:freeradius/stable-3.0"
-    update_cache: yes
-  tags: [ freeradius, apt ]
-
 - name: Install FreeRADIUS from Apt
   # Note that we've deliberately elected to use FreeRADIUS from a
   # package repository rather than compiling the most recent version as
@@ -36,7 +28,7 @@
 - import_tasks: "tasks/eduroam-idp.yml"
 
 # This block can be removed when we revert to a stock package
-- name: Deal with the quirks of the PPA 3.x version (not needed for stock version)
+- name: Deal with the quirks of the 3.x version (not needed for stock version)
   become: yes
   block:
     - name: Preload libpam.so.0 for FreeRADIUS 3.x
@@ -52,7 +44,7 @@
           #!/bin/sh
           if $(grep -q LD_PRELOAD /etc/default/freeradius); then
             printf "\n"
-            printf "FreeRADIUS 3.x from ppa:freeradius/stable-3.0 has some quirks.\n"
+            printf "FreeRADIUS 3.x has some quirks.\n"
             printf "If you need to run it in debugging mode, use:\n"
             printf "$ LD_PRELOAD=/lib/{{ansible_userspace_architecture}}-linux-gnu/libpam.so.0 freeradius -X\n\n"
           fi
