@@ -32,6 +32,7 @@
   args:
     chdir: /tmp/pam-imap-{{pam_imap_version}}
     creates: pam_imap.so
+  tags: pam_imap
 
 - name: Install pam_imap
   become: yes
