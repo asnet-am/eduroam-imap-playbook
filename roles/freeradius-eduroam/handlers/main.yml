@@ -2,7 +2,7 @@
 # handlers file for freeradius-eduroam
 - name: restart freeradius
   become: yes
-  systemd:
+  service:
     name: freeradius
     state: restarted
   tags: [ freeradius, freeradius-config ]

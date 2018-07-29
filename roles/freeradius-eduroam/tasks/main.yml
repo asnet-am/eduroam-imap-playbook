@@ -39,7 +39,6 @@
     " > /etc/freeradius/backup_3.0/version
   when: rad_cfg_bak.stat.exists == False
   become: yes
-  become_user: freerad
   tags: freeradius
 
 - import_tasks: "tasks/eduroam-sp.yml"
@@ -60,11 +59,11 @@
     - { src: templates/certs/xpextensions.j2    , dest: /etc/freeradius/3.0/certs/xpextensions     }
   when: rad_crt.stat.exists == False
   become: yes
-  become_user: freerad
   tags: freeradius
 
 - name: Create certificates
   shell: |2
+    chown freerad:freerad *
     make
     chown freerad:freerad *
   args:
@@ -72,7 +71,6 @@
     creates: server.pem
   when: rad_crt.stat.exists == False
   become: yes
-  become_user: freerad
   tags: freeradius
 
 # This block can be removed when we revert to a stock package
@@ -104,7 +102,7 @@
 
 - name: Start the FreeRADIUS service
   become: yes
-  systemd:
+  service:
     name: freeradius
     state: started
     enabled: yes
