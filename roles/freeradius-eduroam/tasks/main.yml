@@ -23,6 +23,25 @@
   when: use_ldap is defined and use_ldap
   tags: [ freeradius, apt ]
 
+- stat: path=/etc/freeradius/backup_3.0
+  register: rad_cfg_bak
+  tags: freeradius
+
+- name: Backup original freeradius configs
+  shell: |2
+    cp -arp /etc/freeradius/3.0 /etc/freeradius/backup_3.0
+
+    echo "# apt list --installed freeradius*
+    $(apt list --installed freeradius*)
+
+    # freeradius -v
+    $(freeradius -v)
+    " > /etc/freeradius/backup_3.0/version
+  when: rad_cfg_bak.stat.exists == False
+  become: yes
+  become_user: freerad
+  tags: freeradius
+
 - import_tasks: "tasks/eduroam-sp.yml"
 
 - import_tasks: "tasks/eduroam-idp.yml"
