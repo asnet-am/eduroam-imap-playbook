@@ -19,14 +19,10 @@
     - libssl-dev
   tags: [ eapol_test, apt ]
 
-- name: Copy build configuration
-  copy:
-    src: debconfig
-    dest: /tmp/wpa_supplicant-{{wpa_supplicant_version}}/wpa_supplicant/.config
-  tags: eapol_test
-
 - name: Build eapol_test
   shell: |2
+    cp defconfig .config
+    sed -i .config -e 's/#CONFIG_EAPOL_TEST=y/CONFIG_EAPOL_TEST=y/i; s/CONFIG_DRIVER_NL80211=y/#CONFIG_DRIVER_NL80211=y/i; s/#CONFIG_L2_PACKET=linux/CONFIG_L2_PACKET=none/i'
     make eapol_test
   args:
     chdir: /tmp/wpa_supplicant-{{wpa_supplicant_version}}/wpa_supplicant
