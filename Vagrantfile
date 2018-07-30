@@ -20,11 +20,6 @@ Vagrant.configure("2") do |config|
 	my.vm.synced_folder ".", "/vagrant"
   end
 
-  # If we use virtualbox, and if we support cloning, use it
-  config.vm.provider "virtualbox" do |vb|
-	vb.linked_clone = true if Gem::Version.new(Vagrant::VERSION) >= Gem::Version.new('1.8.0')
-  end
-
   config.vm.provision "ansible_local" do |ansible|
     ansible.playbook = "site.yml"
     ansible.inventory_path = "inventories/development"
