@@ -46,6 +46,35 @@
 
 - import_tasks: "tasks/eduroam-idp.yml"
 
+- stat: path=/etc/freeradius/3.0/certs/server.pem
+  register: rad_crt
+  tags: freeradius
+
+- name: Prepare config for new certificates
+  template: src={{item.src}} dest={{item.dest}}
+  with_items:
+    - { src: templates/certs/ca.cnf.j2          , dest: /etc/freeradius/3.0/certs/ca.cnf           }
+    - { src: templates/certs/client.cnf.j2      , dest: /etc/freeradius/3.0/certs/client.cnf       }
+    - { src: templates/certs/inner-server.cnf.j2, dest: /etc/freeradius/3.0/certs/inner-server.cnf }
+    - { src: templates/certs/server.cnf.j2      , dest: /etc/freeradius/3.0/certs/server.cnf       }
+    - { src: templates/certs/xpextensions.j2    , dest: /etc/freeradius/3.0/certs/xpextensions     }
+  when: rad_crt.stat.exists == False
+  become: yes
+  become_user: freerad
+  tags: freeradius
+
+- name: Create certificates
+  shell: |2
+    make
+    chown freerad:freerad *
+  args:
+    chdir: /etc/freeradius/3.0/certs/
+    creates: server.pem
+  when: rad_crt.stat.exists == False
+  become: yes
+  become_user: freerad
+  tags: freeradius
+
 # This block can be removed when we revert to a stock package
 - name: Deal with the quirks of the 3.x version (not needed for stock version)
   become: yes

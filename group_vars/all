@@ -32,3 +32,30 @@ imap_cache: 600
 
 # The name of the PAM service to use for both FreeRADIUS and pam-imap
 pam_service_name: pam-imap-radius
+
+# Common Certificate Infomation
+cert_country: KR
+cert_state: Daejeon
+cert_local: Yuseong-gu
+cert_org: Korea Institute of Science and Technology Information
+cert_unit: Korea Research Environment Open NETwork
+#cert_crl_uri: ""
+
+# CA Infomation
+#cert_ca_email: ca@kisti.re.kr
+#cert_ca_email: ""
+cert_ca_common_name: "KISTI Certificate Authority"
+
+# Server Certificate Infomation
+#cert_server_email: ca@kisti.re.kr
+#cert_server_email: ""
+cert_server_common_name: flr1-example.kreonet.net
+
+# Inner Server Certificate Infomation
+#cert_inner_server_email: ca@kisti.re.kr
+#cert_inner_server_email: ""
+cert_inner_server_common_name: inside.flr1-example.kreonet.net
+
+# Client Certificate Infomation
+cert_client_email: johndoe@kisti.re.kr
+cert_client_common_name: "{{cert_client_email}}"
