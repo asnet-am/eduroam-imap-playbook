@@ -34,28 +34,26 @@ imap_cache: 600
 pam_service_name: pam-imap-radius
 
 # Common Certificate Infomation
-cert_country: KR
-cert_state: Daejeon
-cert_local: Yuseong-gu
-cert_org: Korea Institute of Science and Technology Information
-cert_unit: Korea Research Environment Open NETwork
+cert_country: AM
+cert_state: Yerevan
+cert_local: Yerevan
+cert_org: SCI
+cert_unit: SCI.AM
 #cert_crl_uri: ""
 
 # CA Infomation
-#cert_ca_email: ca@kisti.re.kr
-#cert_ca_email: ""
-cert_ca_common_name: "KISTI Certificate Authority"
+cert_ca_email: "art@sci.am"
+cert_ca_common_name: "sci.am"
+cert_ca_default_days: 3600
+cert_ca_default_md: sha256
+cert_ca_default_bits: 4096
+cert_ca_input_password: 123456789
+cert_ca_output_password: 123456789
 
 # Server Certificate Infomation
-#cert_server_email: ca@kisti.re.kr
-#cert_server_email: ""
-cert_server_common_name: flr1-example.kreonet.net
-
-# Inner Server Certificate Infomation
-#cert_inner_server_email: ca@kisti.re.kr
-#cert_inner_server_email: ""
-cert_inner_server_common_name: inside.flr1-example.kreonet.net
-
-# Client Certificate Infomation
-cert_client_email: johndoe@kisti.re.kr
-cert_client_common_name: "{{cert_client_email}}"
+cert_server_common_name: sci.am
+cert_server_default_days: 3600
+cert_server_default_md: sha256
+cert_server_default_bits: 4096
+cert_server_input_password: 123456789
+cert_server_output_password: 123456789
