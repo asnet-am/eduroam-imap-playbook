@@ -6,7 +6,7 @@ Install FreeRADIUS and configure it for EAP authentication in a way that is comp
 Requirements
 ------------
 
-This role is designed to be played on Ubuntu. It has been tested with Ubuntu 16.04 LTS.
+This role is designed to be played on Ubuntu. It has been tested with Ubuntu 18.04 LTS.
 
 Users will need RADIUS detail from their own eduroam national roaming operator.
 
