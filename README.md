@@ -11,10 +11,8 @@ All configuration happens in [group_vars/all](group_vars/all). You should edit t
 The playbook has been set up to be readily used in a [Vagrant](https://www.vagrantup.com/) enviroment with [VirtualBox](https://www.virtualbox.org/) as the provider. In such an enviroment, the following should get you going:
 
 ```bash
-git clone https://github.ac.za/safire-ac-za/eduroam-imap-playbook.git
+git clone https://github.com/asnet-am/eduroam-imap-playbook
 cd eduroam-imap-playbook
-vagrant up
-vagrant ssh eduroam-imap
 ```
 In other enviroments, the [Vagrantfile](Vagrantfile) may need to be edited. Alternatively, the playbook should be usable without Vagrant given an appropriate [inventory](inventories/).
 
