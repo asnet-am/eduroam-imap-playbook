@@ -14,9 +14,9 @@ private_key		= $dir/server.key
 RANDFILE		= $dir/.rand
 name_opt		= ca_default
 cert_opt		= ca_default
-default_days		= 60
+default_days		= "{{cert_inner_server_default_days}}"
 default_crl_days	= 30
-default_md		= sha256
+default_md		= "{{cert_inner_server_default_md}}"
 preserve		= no
 policy			= policy_match
 
@@ -40,9 +40,9 @@ emailAddress		= optional
 [ req ]
 prompt			= no
 distinguished_name	= server
-default_bits		= 2048
-input_password		= whatever
-output_password		= whatever
+default_bits		= "{{cert_inner_server_default_bits}}"
+input_password		= "{{cert_inner_server_input_password}}"
+output_password		= "{{cert_inner_server_output_password}}"
 
 [server]
 countryName		= {{cert_country}}
