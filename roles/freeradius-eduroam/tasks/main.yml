@@ -46,6 +46,18 @@
 
 - import_tasks: "tasks/eduroam-idp.yml"
 
+- name: Register Cert Directory
+  find:
+    paths: /etc/freeradius/3.0/certs
+    patterns: "*.pem,*.der,*.csr,*.crt,*.key,*.p12,serial*,index.txt*,*.cnf"
+  register: files_to_delete
+
+- name: Remove registered files
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ files_to_delete.files }}"
+
 - stat: path=/etc/freeradius/3.0/certs/server.pem
   register: rad_crt
   tags: freeradius
