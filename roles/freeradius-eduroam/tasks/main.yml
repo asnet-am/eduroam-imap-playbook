@@ -46,7 +46,7 @@
 
 - import_tasks: "tasks/eduroam-idp.yml"
 
-- name: Register Cert Directory
+- name: Register files from Cert directory
   find:
     paths: /etc/freeradius/3.0/certs
     patterns: "*.pem,*.der,*.csr,*.crt,*.key,*.p12,serial*,index.txt*,*.cnf"
