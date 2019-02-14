@@ -14,9 +14,9 @@ private_key		= $dir/ca.key
 RANDFILE		= $dir/.rand
 name_opt		= ca_default
 cert_opt		= ca_default
-default_days		= 60
+default_days		= {{cert_client_default_days}}
 default_crl_days	= 30
-default_md		= sha256
+default_md		= {{cert_client_default_md}}
 preserve		= no
 policy			= policy_match
 
@@ -40,9 +40,9 @@ emailAddress		= optional
 [ req ]
 prompt			= no
 distinguished_name	= client
-default_bits		= 2048
-input_password		= whatever
-output_password		= whatever
+default_bits		= {{cert_client_default_bits}}
+input_password		= {{cert_client_input_password}}
+output_password		= {{cert_client_output_password}}
 
 [client]
 countryName		= {{cert_country}}
@@ -67,8 +67,12 @@ organizationalUnitName	= {{cert_unit}}
 #organizationalUnitName	=
 {% endif %}
 {% if cert_client_email is defined %}
-emailAddress		= {{cert_client_email}}
+emailAddress            = {{cert_client_email}}
 {% else %}
-#emailAddress	=
+#emailAddress   =
 {% endif %}
-commonName		= {{cert_client_common_name}}
+{% if cert_client_common_name is defined %}
+commonName              = {{cert_client_common_name}}
+{% else %}
+#commonName =
+{% endif %}
