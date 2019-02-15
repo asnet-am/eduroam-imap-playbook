@@ -2,11 +2,9 @@
 
 This is an [Ansible playbook](http://docs.ansible.com/ansible/latest/playbooks.html) to set up [eduroam](https://eduroam.org/) authentication against an IMAP server.
 
-Our main use-case for this is allowing [Google GSuite](https://gsuite.google.com/) users to authenticate on eduroam. However, the concept should be extensible to any IMAP server.
+The concept should allow users to authenticate on eduroam via their organization's IMAP server, including corporate IMAP servers, as well as [Google GSuite](https://gsuite.google.com/).
 
 ## Using the playbook
-
-All configuration happens in [group_vars/all](group_vars/all). You should edit that file to suit your enviroment.
 
 To use the playbook follow to commands below:
 
@@ -14,6 +12,7 @@ To use the playbook follow to commands below:
 git clone https://github.com/asnet-am/eduroam-imap-playbook
 cd eduroam-imap-playbook
 ```
+All configuration happens in [group_vars/all](group_vars/all). You should edit that file to suit your enviroment.
 
 The playbook is also (hopefully) self documenting, allowing people who don't make use of Ansible to follow the configuration.
 
