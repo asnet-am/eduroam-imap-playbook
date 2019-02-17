@@ -23,7 +23,7 @@ For running the playbook
 cd eduroam-imap-playbook
 ansible-playbook -i inventories/development site.yml
 ```
-All configuration happens in [group_vars/all](group_vars/all). You should edit that file to suit your enviroment.
+All configuration happens in [group_vars/all](group_vars/all). You should edit that file to suit your enviroment. For more information read [group_vars/README.md](group_vars/README.md)
 
 The playbook is also (hopefully) self documenting, allowing people who don't make use of Ansible to follow the configuration.
 
