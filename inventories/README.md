@@ -1,8 +1,12 @@
 For Remote access first in /etc/ansible/hosts
 add your hosts as follows
+
 [frsthost]
+
 192.168.1.2 
+
 [scndhost]
+
 192.168.1.3
 
 Notice: The hostnames and ip addresses need to be changed
