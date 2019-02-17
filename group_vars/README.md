@@ -6,14 +6,14 @@ radius_realm:
 
 radius_local_users:
 
-Common Certificate Infomation
+Common Certificate Infomation.
 
-CA Infomation
+CA Infomation.
 
-Server Certificate Infomation
+Server Certificate Infomation.
 
-Inner Server Certificate Infomation
+Inner Server Certificate Infomation.
 
-Client Certificate Infomation
+Client Certificate Infomation.
 
 
