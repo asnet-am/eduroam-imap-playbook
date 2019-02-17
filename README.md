@@ -7,10 +7,20 @@ The concept should allow users to authenticate on eduroam via their organization
 ## Using the playbook
 
 To use the playbook follow to commands below:
+For installing git and ansible
+```bash
+apt install git ansible
+```
 
+For cloning the playbook
 ```bash
 git clone https://github.com/asnet-am/eduroam-imap-playbook
+```
+
+For running the playbook
+```bash
 cd eduroam-imap-playbook
+ansible-playbook -i inventories/development site.yml
 ```
 All configuration happens in [group_vars/all](group_vars/all). You should edit that file to suit your enviroment.
 
