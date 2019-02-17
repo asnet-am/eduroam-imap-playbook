@@ -1,6 +1,5 @@
 ---
 # The upstream eduroam federation-level RADIUS servers
-# These are for sample, not working; get yours from your NRO
 eduroam_flr_servers:
   - hostname: flrs1.eduroam.am
     ip: 93.187.165.125
