@@ -7,6 +7,7 @@ The concept should allow users to authenticate on eduroam via their organization
 ## Using the playbook
 
 To use the playbook follow to commands below:
+
 For installing git and ansible
 ```bash
 apt install git ansible
