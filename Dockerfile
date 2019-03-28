@@ -7,4 +7,4 @@ RUN apt-get install -y ansible
 RUN apt-get install -y git
 RUN git clone https://github.com/asnet-am/eduroam-imap-playbook.git
 
-WORKDIR /my_docker
+WORKDIR /eduroam-imap-playbook
