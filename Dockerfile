@@ -1,5 +1,4 @@
-From ubuntu
-USER root
+FROM bluescorpio711/eduroam
 
 RUN apt-get update
 #RUN apt install python3-pip
