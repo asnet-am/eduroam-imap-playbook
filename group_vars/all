@@ -3,11 +3,11 @@
 eduroam_flr_servers:
   - hostname: flrs1.eduroam.am
     ip: 93.187.165.125
-    port: 1812
+    port: 22122
     secret: MySharedSecret
   - hostname: flrs2.eduroam.am
     ip: 93.187.162.70
-    port: 1812
+    port: 22122
     secret: MySharedSecret
 
 # Your realm for eduroam (usually your primary DNS name)
