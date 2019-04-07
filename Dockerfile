@@ -8,4 +8,4 @@ RUN git clone https://github.com/asnet-am/eduroam-imap-playbook.git
 WORKDIR /eduroam-imap-playbook
 
 RUN apt-get -y install sudo
-#RUN ansible-playbook -i inventories/development site.yml
+RUN ansible-playbook -i inventories/development site.yml
