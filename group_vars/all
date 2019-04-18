@@ -32,7 +32,7 @@ imap_cache: 600
 # The name of the PAM service to use for both FreeRADIUS and pam-imap
 pam_service_name: pam-imap-radius
 
-# Common Certificate Infomation
+# Common Certificate Information
 cert_country: AM
 cert_state: Yerevan
 cert_local: Yerevan
@@ -40,7 +40,7 @@ cert_org: SCI
 cert_unit: SCI.AM
 #cert_crl_uri: ""
 
-# CA Infomation
+# CA Information
 cert_ca_email: "art@sci.am"
 cert_ca_common_name: "sci.am"
 cert_ca_default_days: 3600
@@ -49,7 +49,7 @@ cert_ca_default_bits: 4096
 cert_ca_input_password: 123456789
 cert_ca_output_password: 123456789
 
-# Server Certificate Infomation
+# Server Certificate Information
 cert_server_common_name: sci.am
 cert_server_default_days: 3600
 cert_server_default_md: sha256
@@ -57,7 +57,7 @@ cert_server_default_bits: 4096
 cert_server_input_password: 123456789
 cert_server_output_password: 123456789
 
-# Inner Server Certificate Infomation
+# Inner Server Certificate Information
 cert_inner_server_common_name: inside.flrs1.eduroam.am
 cert_inner_server_default_days: 3600
 cert_inner_server_default_md: sha256
@@ -65,7 +65,7 @@ cert_inner_server_default_bits: 4096
 cert_inner_server_input_password: 123456789
 cert_inner_server_output_password: 123456789
 
-# Client Certificate Infomation
+# Client Certificate Information
 cert_client_default_days: 3600
 cert_client_default_md: sha256
 cert_client_default_bits: 4096
