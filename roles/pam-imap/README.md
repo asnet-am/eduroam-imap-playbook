@@ -6,7 +6,7 @@ Download, compile and install the pam_imap PAM module on Ubuntu
 Requirements
 ------------
 
-This role is designed to be played on Ubuntu. It has been tested with Ubuntu 16.04 LTS.
+This role is designed to be played on Ubuntu. It has been tested with Ubuntu 18.04 LTS.
 
 Role Variables
 --------------
