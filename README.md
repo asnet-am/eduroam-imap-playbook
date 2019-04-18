@@ -51,7 +51,7 @@ There are a couple of things that are not configured by the playbook and may req
 
 * **Remote Access** -- For remote access read the [eduroam-imap-playbook/inventories/README.md](inventories/README.md)
 
-* **IMAP SSL Certificate** -- if your IMAP server does not use a certificate that's in the trust store for your server, you may need to supply the certificate and configure [roles/pam-imap/templates/pam_imap.conf.j2](pam_imap.conf) accordingly.
+* **IMAP SSL Certificate** -- if your IMAP server does not use a certificate that's in the trust store for your server, you may need to supply the certificate and configure [roles/pam-imap/templates/pam_imap.conf.j2](roles/pam-imap/templates/pam_imap.conf) accordingly.
 
 * **EAP SSL Certificate** -- the role uses the default certificates created by the Ubuntu FreeRADIUS package. You may want to replace these.
 
