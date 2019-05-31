@@ -27,7 +27,7 @@ imap_ssl: yes
 imap_realm: "{{radius_realm}}"
 
 # How long (in seconds) to cache credentials for. Set to no to disable.
-imap_cache: 600
+imap_cache: 3600
 
 # The name of the PAM service to use for both FreeRADIUS and pam-imap
 pam_service_name: pam-imap-radius
