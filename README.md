@@ -33,7 +33,7 @@ This playbook contains a number of roles, all of which should be usable independ
 
 ### [pam-imap](roles/pam-imap)
 
-The **pam-imap** role downloads, compiles, installs, and configures the [pam-imap](https://github.com/wdoekes/pam-imap) pluggable authentication module. This PAM module allows for authentication against an IMAP server. By default, this is configured to be `imap.gmail.com`. See the [documentation](roles/pam-imap/README.md) for how to change this.
+The **pam-imap** role downloads, compiles, installs, and configures the [pam-imap](https://github.com/wdoekes/pam-imap) pluggable authentication module. This PAM module allows for authentication against an IMAP server. By default, this is configured to be `mail.asnet.am`. See the [documentation](roles/pam-imap/README.md) for how to change this.
 
 ### [freeradius-eduroam](roles/freeradius-eduroam)
 
